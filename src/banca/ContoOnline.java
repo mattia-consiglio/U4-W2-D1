@@ -1,18 +1,22 @@
 package banca;
 
-public class ContoOnline {
-    ou e max re levo;
-    ContoOnLine(String titolare, double saldo, double maxP) {
+public class ContoOnline extends ContoCorrente {
+    double maxPrelievo;
+
+    ContoOnline(String titolare, double saldo, double maxP) {
         super(titolare, saldo);
         this.maxPrelievo = maxP;
-        void stampaSaldo() {
-            System.out.println("Titolare: " + titolare +
-                    + " Massimo movimenti:
-            void preleva(double x) {
-                if (x maxPrelievo) {
-                    super.preleva(x);
-                    - Saldo: " + saldo +
-                            + maxMovimenti +
-                            - Num movimenti: " + nMovimenti
-                            - Massimo prelievo possibile: " + maxPrelievo);
+    }
+
+    void stampaSaldo() {
+        System.out.println("Titolare: " + titolare + " - Saldo: " + saldo + " - Numero movimenti: " + nMovimenti + " - Massimo movimenti: " + maxMovimenti + " - Massimo prelievo: " + maxPrelievo);
+    }
+
+    void preleva(double x) throws BancaException {
+        if (x <= maxPrelievo) {
+            super.preleva(x);
+        } else {
+            throw new BancaException("il prelievo non è disponibile");
+        }
+    }
 }

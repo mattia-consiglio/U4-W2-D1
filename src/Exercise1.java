@@ -20,9 +20,6 @@ public class Exercise1 {
             try {
                 System.out.println("Scegli la posizione (partendo da 0) per sostituire in numero random");
                 int position = Integer.parseInt(sc.nextLine());
-//                if (position < 0 || position > numbers.length) {
-//                    throw new InvalidNumeberRangeException("Invalid position");
-//                }
                 numbers[position] = new Random().nextInt(1, 10);
                 logger.info(Arrays.toString(numbers));
                 break;

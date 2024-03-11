@@ -12,11 +12,19 @@ public class ContoCorrente {
         nMovimenti = 0;
     }
 
-    void preleva(double x) {
-        if (nMovimenti < maxMovimenti)
+    void preleva(double x) throws BancaException {
+        if (saldo - x < 0) {
+            nMovimenti++;
+
+            throw new BancaException("Il saldo non e' sufficiente per prelevare");
+        }
+
+        if (nMovimenti < maxMovimenti) {
             saldo = saldo - x;
-        else
+        } else {
             saldo = saldo - x - 0.50;
+        }
+
         nMovimenti++;
     }
 
